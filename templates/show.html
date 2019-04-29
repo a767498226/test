@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+
+</head>
+<body>
+
+<div class="container">
+    <button><a href="{% url 'register' %}"> 添加</a></button>
+
+    <table class="table-bordered table-striped col-md-8">
+
+        <thead>
+        <tr>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>昵称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {% for user in all_user %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.nickname }}</td>
+                <td>
+                    <a href="{% url 'edit' user.pk %}">编辑</a>
+                    <a href="{% url 'drop' user.pk %}">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</body>
+</html>
